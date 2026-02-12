@@ -1,12 +1,7 @@
-
-//Recuerda activar Show suggestions as you type
-
-
 import javax.swing.*;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-
 
 public class Exercise {
     public static void main(String[] args) {
@@ -48,3 +43,41 @@ public class Exercise {
         }while(opcionIndice != 5);
     }
 }
+
+//==============================================================================================================
+
+//Alternativa con Switch Expression y Map.of para una sintaxis más limpia
+
+import javax.swing.JOptionPane;
+import java.util.Map;
+
+public class MantenedorProductos {
+    public static void main(String[] args) {
+        var opciones = Map.of("Actualizar", 1, "Eliminar", 2, "Agregar", 3, "Listar", 4, "Salir", 5);
+        Object[] opArreglo = opciones.keySet().toArray();
+        Integer sel = 0;
+
+        do {
+            Object opcion = JOptionPane.showInputDialog(null, "Seleccione una Opción", "Mantenedor", 1, null, opArreglo, opArreglo[0]);
+            
+            if (opcion == null) break; // Salida rápida si cancela
+
+            sel = opciones.get(opcion.toString());
+            
+            // Usamos Switch Expression para asignar el mensaje en una sola línea
+            String msj = switch (sel) {
+                case 1 -> "Usuario actualizado";
+                case 2 -> "Usuario eliminado";
+                case 3 -> "Usuario agregado";
+                case 4 -> "Listando usuarios";
+                case 5 -> "Haz salido con éxito!";
+                default -> "Opción inválida";
+            };
+
+            JOptionPane.showMessageDialog(null, msj + (sel == 5 ? "" : " correctamente"));
+
+        } while (sel != 5);
+    }
+}
+
+
