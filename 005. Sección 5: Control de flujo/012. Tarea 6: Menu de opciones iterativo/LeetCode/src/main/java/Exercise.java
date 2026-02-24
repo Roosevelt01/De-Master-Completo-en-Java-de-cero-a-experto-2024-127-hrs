@@ -30,7 +30,6 @@ public class Exercise {
             }
 
             opcionIndice = opciones.get(opcion.toString());
-            //actualizar, eliminar, crear, listar y salir.
             switch(opcionIndice){
                 case 1 -> JOptionPane.showInputDialog(null, "Usuario actualizado correctamente");
                 case 2 -> JOptionPane.showInputDialog(null, "Usuario eliminado correctamente");
